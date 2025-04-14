@@ -17,6 +17,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
     type = "SystemAssigned"
   }
 
+  kubernetes_version = "1.32.0"
+
 }
 
 
