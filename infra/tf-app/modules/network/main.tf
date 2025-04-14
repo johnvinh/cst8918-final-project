@@ -1,8 +1,3 @@
-resource "azurerm_resource_group" "cst8918_rg" {
-  name     = "cst8918-final-project-group-4"
-  location = var.region
-}
-
 # virtual network with IP address space 10.0.0.0/14
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.label_prefix}-FPVnet"
@@ -43,4 +38,14 @@ resource "azurerm_subnet" "admin" {
   resource_group_name  = azurerm_resource_group.cst8918_rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.3.0.0/16"]
+}
+
+
+output "subnet_ids" {
+  value = {
+    prod  = azurerm_subnet.prod.id
+    test  = azurerm_subnet.test.id
+    dev   = azurerm_subnet.dev.id
+    admin = azurerm_subnet.admin.id
+  }
 }
