@@ -1,3 +1,5 @@
+<<<<<<< HEAD:infra/tf-app/modules/network/main.tf
+=======
 # Configure the Terraform runtime requirements.
 terraform {
   required_version = ">= 1.1.0"
@@ -23,6 +25,7 @@ resource "azurerm_resource_group" "cst8918_rg" {
   location = var.region
 }
 
+>>>>>>> origin/main:infra/network/main.tf
 # virtual network with IP address space 10.0.0.0/14
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.label_prefix}-FPVnet"
@@ -63,4 +66,14 @@ resource "azurerm_subnet" "admin" {
   resource_group_name  = azurerm_resource_group.cst8918_rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.3.0.0/16"]
+}
+
+
+output "subnet_ids" {
+  value = {
+    prod  = azurerm_subnet.prod.id
+    test  = azurerm_subnet.test.id
+    dev   = azurerm_subnet.dev.id
+    admin = azurerm_subnet.admin.id
+  }
 }
