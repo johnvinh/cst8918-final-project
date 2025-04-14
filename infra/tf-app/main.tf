@@ -25,7 +25,7 @@ resource "azurerm_resource_group" "cst8918_rg" {
 module "network" {
   source              = "./modules/network"
   resource_group_name = var.resource_group_name
-  location            = var.location
+  location            = var.region
 
   depends_on = [azurerm_resource_group.cst8918_rg]
 }
