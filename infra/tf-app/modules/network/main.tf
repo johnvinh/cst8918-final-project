@@ -1,3 +1,31 @@
+<<<<<<< HEAD:infra/tf-app/modules/network/main.tf
+=======
+# Configure the Terraform runtime requirements.
+terraform {
+  required_version = ">= 1.1.0"
+
+  required_providers {
+    # Azure Resource Manager provider and version
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "3.94.0"
+    }
+  }
+
+}
+
+# Define providers and their config params
+provider "azurerm" {
+  # Leave the features block empty to accept all defaults
+  features {}
+}
+
+resource "azurerm_resource_group" "cst8918_rg" {
+  name     = "cst8918-final-project-group-4"
+  location = var.region
+}
+
+>>>>>>> origin/main:infra/network/main.tf
 # virtual network with IP address space 10.0.0.0/14
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.label_prefix}-FPVnet"
