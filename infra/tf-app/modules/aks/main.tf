@@ -2,7 +2,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   name                = "${label_prefix}-FPaks"
   location            = var.region
   resource_group_name = var.label_prefix
-  dns_prefix          = "${var.cluster_name}-dns"
+  dns_prefix          = "${var.label_prefix}-dns"
 
   default_node_pool {
     name       = "default"
@@ -16,6 +16,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
   identity {
     type = "SystemAssigned"
   }
+
+  kubernetes_version = "1.32.0"
 
 }
 
