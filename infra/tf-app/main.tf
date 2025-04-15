@@ -9,6 +9,14 @@ terraform {
     }
   }
 
+    backend "azurerm" {
+    storage_account_name = "finalprojectstoragess"
+    container_name       = "tfstate"
+    key                  = "prod.app.tfstate"
+    use_oidc             = true
+  }
+
+
 }
 
 resource "azurerm_resource_group" "cst8918_rg" {
