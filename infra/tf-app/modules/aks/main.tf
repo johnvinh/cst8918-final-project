@@ -8,7 +8,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     name       = "default"
     node_count = 1
     vm_size    = "Standard_B2s"
-    enable_auto_scaling  = true
+    auto_scaling_enabled = true
     max_count  = 3  
     min_count  = 1  
   }
