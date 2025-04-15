@@ -21,7 +21,7 @@ provider "azurerm" {
   # Leave the features block empty to accept all defaults
   subscription_id = var.subscription_id
   features {}
-  resource_provider_registrations = "none"
+  use_oidc = true
 }
 
 
