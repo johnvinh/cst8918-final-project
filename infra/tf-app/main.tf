@@ -9,6 +9,13 @@ terraform {
     }
   }
 
+  backend "azurerm" {
+    storage_account_name = "cst8918storagegroupfp4"
+    container_name       = "tfstate"
+    key                  = "prod.app.tfstate"
+    use_oidc             = true
+  }
+
 }
 
 resource "azurerm_resource_group" "cst8918_rg" {
@@ -21,6 +28,7 @@ provider "azurerm" {
   # Leave the features block empty to accept all defaults
   subscription_id = var.subscription_id
   features {}
+  use_oidc = true
 }
 
 
