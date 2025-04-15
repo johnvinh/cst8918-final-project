@@ -10,7 +10,7 @@ terraform {
   }
 
   backend "azurerm" {
-    storage_account_name = "cst8918storagegroupfp4"
+    storage_account_name = "johnvinhstoragetest"
     container_name       = "tfstate"
     key                  = "prod.app.tfstate"
     use_oidc             = true
