@@ -21,6 +21,7 @@ provider "azurerm" {
   # Leave the features block empty to accept all defaults
   subscription_id = var.subscription_id
   features {}
+  skip_provider_registration = true
 }
 
 
