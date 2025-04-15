@@ -8,3 +8,19 @@ variable "region" {
   default     = "canadacentral"
   description = "Resource region"
 }
+
+variable "resource_group" {
+  type = string
+}
+
+variable "aks_test_name" {
+  type = string
+}
+
+variable "aks_prod_name" {
+  type = string
+}
+
+variable "subnet_id" {
+  type = string
+}

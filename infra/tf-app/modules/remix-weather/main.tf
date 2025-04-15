@@ -1,5 +1,5 @@
 resource "azurerm_container_registry" "acr" {
-  name                     = "${var.label_prefix}-acr"
+  name                     = "cst8918finalprojectgroup4acr"
   location                 = var.region
   resource_group_name      = var.label_prefix
   sku                      = "Basic"
@@ -11,7 +11,7 @@ resource "azurerm_redis_cache" "test" {
   name                = "redis-test-redis"
   location            = var.region
   resource_group_name = var.resource_group
-  capacity            = label_prefix
+  capacity            = 1
   family              = "C"
   sku_name            = "Basic"
   enable_non_ssl_port = true
