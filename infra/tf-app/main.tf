@@ -21,8 +21,15 @@ provider "azurerm" {
   # Leave the features block empty to accept all defaults
   subscription_id = var.subscription_id
   features {}
-  resource_provider_registration {
-    skip = true
+  skip_provider_registration = true
+}
+
+resource "azurerm_resource_provider_registration" "arpr" {
+  name = "Microsoft.ContainerService"
+
+  feature {
+    name       = "AKS-DataPlaneAutoApprove"
+    registered = true
   }
 }
 
