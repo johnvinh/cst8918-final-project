@@ -5,7 +5,7 @@ terraform {
     # Azure Resource Manager provider and version
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.94.0"
+      version = "~> 4.0"
     }
   }
 
@@ -19,6 +19,7 @@ resource "azurerm_resource_group" "cst8918_rg" {
 # Define providers and their config params
 provider "azurerm" {
   # Leave the features block empty to accept all defaults
+  subscription_id = var.subscription_id
   features {}
 }
 
@@ -26,7 +27,7 @@ provider "azurerm" {
 module "network" {
   source              = "./modules/network"
   resource_group_name = azurerm_resource_group.cst8918_rg.name
-  region            = azurerm_resource_group.cst8918_rg.location
+  region              = azurerm_resource_group.cst8918_rg.location
 
   depends_on = [azurerm_resource_group.cst8918_rg]
 }
@@ -35,7 +36,7 @@ module "network" {
 module "aks_test" {
   source = "./modules/aks"
 
-  aks_name = "${var.label_prefix}akstest"
+  aks_name           = "aks_test"
   environment        = "test"
   node_count         = 1
   vm_size            = "Standard_B2s"
@@ -48,7 +49,7 @@ module "aks_test" {
 module "aks_prod" {
   source = "./modules/aks"
 
-  aks_name = "${var.label_prefix}aksprod"
+  aks_name           = "aks_prod"
   environment        = "prod"
   min_count          = 1
   max_count          = 3
@@ -59,12 +60,12 @@ module "aks_prod" {
   subnet_id          = module.network.subnet_ids["prod"]
 }
 
-module "remix_weather" {
-  source = "./modules/remix-weather"
+# module "remix_weather" {
+#   source = "./modules/remix-weather"
 
-  region           = azurerm_resource_group.cst8918_rg.location
-  resource_group     = azurerm_resource_group.cst8918_rg.name
-  aks_test_name      = module.aks_test.aks_name
-  aks_prod_name      = module.aks_prod.aks_name
-  subnet_id         = module.network.subnet_ids["prod"]
-}
+#   region           = azurerm_resource_group.cst8918_rg.location
+#   resource_group     = azurerm_resource_group.cst8918_rg.name
+#   aks_test_name      = module.aks_test.aks_name
+#   aks_prod_name      = module.aks_prod.aks_name
+#   subnet_id         = module.network.subnet_ids["prod"]
+# }
