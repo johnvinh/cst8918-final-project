@@ -9,7 +9,7 @@ terraform {
     }
   }
 
-    backend "azurerm" {
+  backend "azurerm" {
     storage_account_name = "finalprojectstoragess"
     container_name       = "tfstate"
     key                  = "prod.app.tfstate"
