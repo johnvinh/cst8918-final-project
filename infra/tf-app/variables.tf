@@ -10,11 +10,11 @@ variable "region" {
 }
 
 variable "resource_group_name" {
-  type = string
+  type        = string
   description = "Resource group for main infrastructure"
 }
 
 variable "subscription_id" {
   description = "The Azure subscription to use for resources"
-  type = string
+  type        = string
 }

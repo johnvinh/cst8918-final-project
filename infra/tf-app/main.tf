@@ -27,7 +27,7 @@ provider "azurerm" {
 module "network" {
   source              = "./modules/network"
   resource_group_name = azurerm_resource_group.cst8918_rg.name
-  region            = azurerm_resource_group.cst8918_rg.location
+  region              = azurerm_resource_group.cst8918_rg.location
 
   depends_on = [azurerm_resource_group.cst8918_rg]
 }
@@ -36,7 +36,7 @@ module "network" {
 module "aks_test" {
   source = "./modules/aks"
 
-  aks_name = "aks_test"
+  aks_name           = "aks_test"
   environment        = "test"
   node_count         = 1
   vm_size            = "Standard_B2s"
@@ -49,7 +49,7 @@ module "aks_test" {
 module "aks_prod" {
   source = "./modules/aks"
 
-  aks_name = "aks_prod"
+  aks_name           = "aks_prod"
   environment        = "prod"
   min_count          = 1
   max_count          = 3

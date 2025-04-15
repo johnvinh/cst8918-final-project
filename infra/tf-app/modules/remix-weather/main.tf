@@ -1,9 +1,9 @@
 resource "azurerm_container_registry" "acr" {
-  name                     = "cst8918finalprojectgroup4acrs"
-  location                 = var.region
-  resource_group_name      = var.label_prefix
-  sku                      = "Basic"
-  admin_enabled            = true
+  name                = "cst8918finalprojectgroup4acrs"
+  location            = var.region
+  resource_group_name = var.label_prefix
+  sku                 = "Basic"
+  admin_enabled       = true
 }
 
 
