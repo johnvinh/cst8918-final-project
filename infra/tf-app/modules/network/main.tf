@@ -2,8 +2,8 @@
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.label_prefix}-FPVnet"
   address_space       = ["10.0.0.0/14"]
-  location            = azurerm_resource_group.cst8918_rg.location
-  resource_group_name = azurerm_resource_group.cst8918_rg.name
+  location            = var.location
+  resource_group_name = var.label_prefix
 }
 
 #  - 4 subnets, where the second octet of the IP address space is used to represent the environment
