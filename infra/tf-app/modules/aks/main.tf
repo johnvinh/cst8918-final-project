@@ -1,5 +1,5 @@
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "${label_prefix}-FPaks"
+  name                = var.aks_name
   location            = var.region
   resource_group_name = var.label_prefix
   dns_prefix          = "${var.label_prefix}-dns"
@@ -29,4 +29,8 @@ output "kube_config" {
 
 output "aks_id" {
   value = azurerm_kubernetes_cluster.aks.id
+}
+
+output "aks_name" {
+  value = azurerm_kubernetes_cluster.aks.name
 }

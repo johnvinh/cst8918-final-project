@@ -8,3 +8,8 @@ variable "region" {
   default     = "canadacentral"
   description = "Resource region"
 }
+
+variable "resource_group_name" {
+  type = string
+  description = "Resource group for main infrastructure"
+}
