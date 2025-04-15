@@ -1,0 +1,7 @@
+{
+    "name": "branch-main",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "subject": "repo:johnvinh/cst8918-final-project:branch:main",
+    "description": "CST8918 Final Project - GitHub Actions",
+    "audiences": ["api://AzureADTokenExchange"]
+  }
